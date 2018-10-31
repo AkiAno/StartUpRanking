@@ -1,0 +1,17 @@
+#nav-menu {
+    background-color: rgb(33, 196, 128);
+    color: white;
+}
+.footer {
+    width: 100%;
+    height: 5rem;
+    background-color: #333333;
+    color: white;
+    font-size: 0.9rem;
+}
+.article p{
+    margin: 1rem;
+}
+hr{
+    margin: 1rem;
+}

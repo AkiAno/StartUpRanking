@@ -7,12 +7,13 @@ use App\APIs\UrlInfo;
 
 class AlexaController extends Controller
 {
-    //MS
-
+    //@MS
     public function index() {
         $urlInfo = new UrlInfo(env('ALEXA_ACCESS_KEY_ID'),env('ALEXA_SECRET_ACCESS_KEY'), 'tesla.com');
         $urlInfo->getUrlInfo(); 
 
+
+    //@MS CANNOT SAVE IT..
 
     }
 }

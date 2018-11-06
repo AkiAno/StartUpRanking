@@ -4,7 +4,7 @@
  */
 
 // @MS: ADDED BY ME
- namespace App\APIs; 
+ namespace App\APIs;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
 
@@ -54,9 +54,7 @@ use Carbon\Carbon;
 
         $url = 'https://' . self::$ServiceHost . self::$ServiceURI . '?' . $canonicalQuery;
         $ret = self::makeRequest($url, $authorizationHeader);
-        echo "\nResults for " . $this->site .":\n\n";
-        echo $ret;
-        self::parseResponse($ret);
+        return self::parseResponse($ret);
     }
 
     protected function sign($key, $msg) {
@@ -147,13 +145,14 @@ use Carbon\Carbon;
         if($xml->count() && $xml->Response->UrlInfoResult->Alexa->count()) {
             $info = $xml->Response->UrlInfoResult->Alexa;
             $nice_array = array(
-                'Links In Count' => $info->ContentData->LinksInCount,
-                'Rank'           => $info->TrafficData->Rank
+                'Links In Count' => (string)$info->ContentData->LinksInCount,
+                'Rank'           => (string)$info->TrafficData->Rank
             );
         }
         foreach($nice_array as $k => $v) {
             echo $k . ': ' . $v ."\n";
         }
+        return $nice_array;
     }
 
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Metric_value extends Model
 {
     protected $table = 'metric_values';
+    protected $guarded = [];
 
     public function account() 
     {

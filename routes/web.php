@@ -18,3 +18,4 @@ Route::get('/news', 'PageController@news');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/alexa','AlexaController@index');

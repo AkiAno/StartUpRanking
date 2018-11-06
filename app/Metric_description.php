@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Metric_description extends Model
 {
     protected $table = 'metric_descriptions';
+    protected $guarded = [];
 
     public function network() 
     {

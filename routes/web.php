@@ -17,8 +17,4 @@ Route::get('/', 'PageController@index');
 Route::get('/news', 'PageController@news');
 
 //Route::get('/home', 'HomeController@index')->name('home');
-
-
-// @MS:
-Route::get('/alexa', 'AlexaController@index');
-
+Route::get('/alexa','AlexaController@index');

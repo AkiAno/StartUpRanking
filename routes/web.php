@@ -16,8 +16,9 @@ Auth::routes();
 Route::get('/', 'PageController@index');
 Route::get('/news', 'PageController@news');
 
-
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/alexa','AlexaController@index');
 
+
 Route::get('/{id}','PageController@show');
+

@@ -47,7 +47,9 @@
                         {{$comp->id}}
                     </td>
                     <td>
-                        {{$comp->name}}
+                        <a href="/{{ $comp->id }}">
+                            {{$comp->name}}
+                        </a>
                     </td>
                     @foreach($networks as $network)
                         @foreach($network->metric_descriptions as $desc)

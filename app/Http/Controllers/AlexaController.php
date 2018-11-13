@@ -60,9 +60,19 @@ class AlexaController extends Controller
 
             // If metric value for today's date already exist in the DB then delete it
             Metric_value::where('date','=',date("Y-m-d"))->where('account_id','=',$account_id)->where('metric_description_id','=',$metric_desc_id)->delete();
-
+        
             // Push latest metric value for today's date in the DB
             Metric_value::create(['date' => date("Y-m-d"), 'value' => $v, 'account_id' => $account_id, 'metric_description_id' => $metric_desc_id]);
+            //
+
+
+
+
+            // using empty function to check the empty value
+            $abc = Metric_value;
+            if(empty($abc)){
+                print ('is empty');
+            }
         }
     
         echo "Finished adding Alexa values to DB<br>";

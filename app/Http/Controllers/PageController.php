@@ -22,4 +22,9 @@ class PageController extends Controller
     }
 
 
+    public function show($company){
+        $company = Company::find($company);
+        // return $company;
+        return view('pages/show', compact('company'));
+    }
 }

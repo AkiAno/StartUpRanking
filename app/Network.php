@@ -13,7 +13,7 @@ class Network extends Model
         return $this->hasMany('App\Account','network_id','id');
     }
 
-    public function metric_description() 
+    public function metric_descriptions() 
     {
         return $this->hasMany('App\Metric_description','network_id','id');
     }

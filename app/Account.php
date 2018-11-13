@@ -14,7 +14,7 @@ class Account extends Model
         return $this->belongsTo('App\Company','company_id','id');
     }
 
-    public function metric_value() 
+    public function metric_values() 
     {
         return $this->hasMany('App\Metric_value','account_id','id');
     }

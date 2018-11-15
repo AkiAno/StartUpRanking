@@ -22,3 +22,10 @@ Route::get('/news', 'PageController@news');
 // @MS:
 Route::get('/alexa', 'AlexaController@index');
 
+Route::get('/reddit', 'RedditController@index');
+Route::post('/reddit', 'RedditController@index');
+
+Route::get('/youtube', 'YoutubeController@index');
+
+
+

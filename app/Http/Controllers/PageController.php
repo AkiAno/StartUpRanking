@@ -13,4 +13,5 @@ class PageController extends Controller
     public function news(){
         return view('pages/news');
     }
+
 }

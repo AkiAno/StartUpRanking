@@ -3,7 +3,7 @@
 
     <h1> {{$company->name}} </h1>
     <div>
-       WEBSITE: {{$company->website}}
+       WEBSITE: {{ $company->website }}
     </div>
 
 @endsection

@@ -35,47 +35,43 @@ class AlexaController extends Controller
         // For each metric value returned by alexa api do -->
         foreach($valuesfromapi as $k => $v) {
             
-            // Get metric_description id
-            $rs = Metric_description::where('network_id','=',$alexaid)->where('description','like',$k)->get();
-            if (count($rs) == 0) {
-                // No record for metric description exists, create a new entry and get it's id
-                $metric_desc_id = Metric_description::create(['description' => $k, 'network_id' => $alexaid, 'endpoint' => ''])->id;
+            if (empty($v)) {
+                echo "<br> Found no value for {$k}";
             } else {
-                // Metric description exists in the table, get the id for the metric description
-                $metric_desc_id = $rs[0]->id;
-            }
 
-            // Get account id 
-            $rs = Account::where('network_id','=',$alexaid)->where('company_id','=',$companyid)->get();
-            if (count($rs) == 0) {
-                // No record for metric description exists, create a new entry and get it's id
-                $account_id = Account::create(['handle' => $companywebsite, 'company_id' => $companyid, 'network_id' => $alexaid])->id;
-            } else {
-                // Metric description exists in the table, get the id for the metric description
-                $account_id = $rs[0]->id;
-            }
+                // Get metric_description id
+                $rs = Metric_description::where('network_id','=',$alexaid)->where('description','like',$k)->get();
+                if (count($rs) == 0) {
+                    // No record for metric description exists, create a new entry and get it's id
+                    $metric_desc_id = Metric_description::create(['description' => $k, 'network_id' => $alexaid, 'endpoint' => '']) ->id;
+                } else {
+                    // Metric description exists in the table, get the id for the metric description
+                    $metric_desc_id = $rs[0]->id;
+                }
+
+                // Get account id 
+                $rs = Account::where('network_id','=',$alexaid)->where('company_id','=',$companyid)->get();
+                if (count($rs) == 0) {
+                    // No record for metric description exists, create a new entry and get it's id
+                    $account_id = Account::create(['handle' => $companywebsite, 'company_id' => $companyid, 'network_id' => $alexaid])->id;
+                } else {
+                    // Metric description exists in the table, get the id for the metric description
+                    $account_id = $rs[0]->id;
+                }
 
 
-            // Add metric value to metric_values table
+                // Add metric value to metric_values table
 
-            // If metric value for today's date already exist in the DB then delete it
-            Metric_value::where('date','=',date("Y-m-d"))->where('account_id','=',$account_id)->where('metric_description_id','=',$metric_desc_id)->delete();
+                // If metric value for today's date already exist in the DB then delete it
+                Metric_value::where('date','=',date("Y-m-d"))->where('account_id','=',$account_id)->where('metric_description_id','=',$metric_desc_id)->delete();
         
-            // Push latest metric value for today's date in the DB
-            Metric_value::create(['date' => date("Y-m-d"), 'value' => $v, 'account_id' => $account_id, 'metric_description_id' => $metric_desc_id]);
-            //
-
-
-
-
-            // using empty function to check the empty value
-            $abc = Metric_value;
-            if(empty($abc)){
-                print ('is empty');
+                // Push latest metric value for today's date in the DB
+                Metric_value::create(['date' => date("Y-m-d"), 'value' => $v, 'account_id' => $account_id, 'metric_description_id'  => $metric_desc_id]);
+            
             }
         }
     
-        echo "Finished adding Alexa values to DB<br>";
+        echo "<br>Finished adding Alexa values to DB<br><br>";
     }
 
     public function index() {

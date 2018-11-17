@@ -126,7 +126,13 @@ use Carbon\Carbon;
      */
     public static function parseResponse($response) {
 //@MS: SimpleXMLElement to \SimpleXMLElement
-        $xml = new \SimpleXMLElement($response,LIBXML_ERR_ERROR,false,'http://awis.amazonaws.com/doc/2005-07-11');
+        try {
+            $xml = new \SimpleXMLElement($response,LIBXML_ERR_ERROR,false,'http://awis.amazonaws.com/doc/2005-07-11');
+        } catch (exception $e) {
+            echo "<br>Error parsing API response: ".$e;
+            echo "<br>Received response: ".$response;
+            echo "<br>";
+        }
         if($xml->count() && $xml->Response->UrlInfoResult->Alexa->count()) {
             $info = $xml->Response->UrlInfoResult->Alexa;
             $nice_array = array(

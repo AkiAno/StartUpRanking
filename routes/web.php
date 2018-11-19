@@ -13,14 +13,15 @@
 
 Auth::routes();
 
-// Route::view('/news', 'pages/news');
-// Route::view('/', 'app');
+Route::get('/', 'PageController@index');
+Route::get('/news', 'PageController@news');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/alexa','AlexaController@index');
 
-//Route::get('/home', 'HomeController@index')->name('home');
+// RANKING TABLES
+Route::get('/rank', 'RankingsController@index');
 
 
-Route::get('/home','PageController@index');
 Route::get('/{id}','PageController@show');
+

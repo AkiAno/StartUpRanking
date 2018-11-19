@@ -1,14 +1,31 @@
-
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Catamaran:400,600,700');
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,600,700");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
+body {
+    background-color: #fff;
+}
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.btn-submit {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    background-color: #3585c7;
+    color: white;
+    font-size: 18px;
+}
+.btn-submit:hover {
+    background-color: #333;
+}
+.react-datepicker-wrapper {
+    font-family: Arial, Helvetica, sans-serif;
 }

@@ -13,11 +13,11 @@
 
 Auth::routes();
 
-Route::get('/', 'PageController@index');
-Route::get('/news', 'PageController@news');
+Route::view('/news', 'pages/news');
+Route::view('/', 'app');
+
 
 //Route::get('/home', 'HomeController@index')->name('home');
-
 
 // @MS:
 Route::get('/alexa', 'AlexaController@index');

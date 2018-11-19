@@ -2,9 +2,11 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
+
 @section('content')
 
 <div class="container flex">
+      <div class="example"></div>
     <div class="month">
         <label>
             Month
@@ -19,6 +21,8 @@
         </label>
         <div id="demo"></div>
     </div>
+
+    <script src="{{mix('js/app.js')}}" ></script>
 </div>
 
 <div class="data container">

@@ -34,16 +34,18 @@ class RankingsController extends Controller
            ->limit(10)->get();
       
 
-       foreach($accounts as $acc){
-           print_r([
-               'company' => $acc->handle,
-               'diff' => $acc->today_value - $acc->past_value
-           ]);
-       }
+       //foreach($accounts as $acc){
+       //    print_r([
+       //        'company' => $acc->handle,
+       //        'diff' => $acc->today_value - $acc->past_value
+       //    ]);
+       
 
-       return $accounts;
+    //return $accounts;
 
+    return view('rankings/home', compact('accounts','today','past','description'));
 
+       } 
 
-   }
+    
 }

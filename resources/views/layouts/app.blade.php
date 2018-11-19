@@ -9,10 +9,6 @@
 
     <title>{{ config('app.name', 'StartUpAnalytics') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{mix('js/app.js')}}" ></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,600,700" rel="stylesheet">
@@ -46,7 +42,7 @@
                                 <a class="nav-link" href="{{action('PageController@index')}}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{action('PageController@news')}}">{{ __('News') }}</a>
+                                {{-- <a class="nav-link" href="{{action('PageController@news')}}">{{ __('News') }}</a> --}}
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

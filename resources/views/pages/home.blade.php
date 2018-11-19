@@ -21,9 +21,10 @@
         </label>
         <div id="demo"></div>
     </div>
-
-    <script src="{{mix('js/app.js')}}" ></script>
 </div>
+
+
+
 
 <div class="data container">
         <table class="table table-lg-responsive">
@@ -82,5 +83,9 @@
             </tbody>
         </table>
 </div>
+
+<div id="react-graph">
+</div>
+<script src="{{mix('js/app.js')}}"></script> 
 
 @endsection

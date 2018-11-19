@@ -10,6 +10,7 @@ class PageController extends Controller
 {
     //
     public function index(){
+        // return 'im here';
         //displaying companies
         $companies = Company::all();
         $networks = Network::all();

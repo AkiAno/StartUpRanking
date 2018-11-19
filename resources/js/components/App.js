@@ -26,4 +26,4 @@ class App extends Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("react-graph"));

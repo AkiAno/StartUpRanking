@@ -13,13 +13,14 @@
 
 Auth::routes();
 
-Route::view('/news', 'pages/news');
-Route::view('/', 'app');
+// Route::view('/news', 'pages/news');
+// Route::view('/', 'app');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/alexa','AlexaController@index');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/{id}','PageController@show');
 
+Route::get('/home','PageController@index');
+Route::get('/{id}','PageController@show');

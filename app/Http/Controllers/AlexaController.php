@@ -77,11 +77,6 @@ class AlexaController extends Controller
 
 
     public function index() {
-<<<<<<< HEAD
-
-        // Get companies from db
-        $allcompanies = Company::all();
-=======
         
         // Get Alexa info for tesla.com
         $urlInfo = new UrlInfo(env('ALEXA_ACCESS_KEY_ID'),env('ALEXA_SECRET_ACCESS_KEY'), 'tesla.com');
@@ -92,7 +87,6 @@ class AlexaController extends Controller
         
         
         dd($metricvalues); 
->>>>>>> master
 
         // Fetch Alexa data using API and add to DB for each company
         foreach($allcompanies as $onecompany){

@@ -35,61 +35,50 @@
                     <th>
                         Company's name
                     </th>
-                    <th>
-                        Alexa rank
-                    </th>
-                    <th>
-                        Facebook followers
-                    </th>
-                    <th>
-                        Instagram followers
-                    </th>
-                    <th>
-                        Twitter followers
-                    </th>
+                    @foreach($networks as $network)
+                        @foreach($network->metric_descriptions as $desc)
+                            <th>
+                                {{$network->name}} {{$desc->description}}
+                            </th>
+                        @endforeach
+                    @endforeach
                 </tr>
             </thead>
             <tbody>
+                    @foreach($companies as $comp)
                 <tr>
-                    <th>
-                            1
-                    </th>
                     <td>
-                        Company 1
+                        {{$comp->id}}
                     </td>
-                    <td class="td">
-                        #125
+                    <td>
+                        <a href="/{{ $comp->id }}" style='color:black;'>
+                            {{$comp->name}}
+                        </a>
                     </td>
-                    <td class="td">
-                        1,234,122
-                    </td>
-                    <td class="td">
-                        1,340,098
-                    </td>
-                    <td class="td">
-                        929,222
-                    </td>
+                    @foreach($networks as $network)
+                        @foreach($network->metric_descriptions as $desc)
+                            <td>
+                                @php 
+
+                                    $account = $comp->accounts()->where('network_id', $network->id)->first();
+                                    
+                                    if($account !== null){
+
+                                    
+                                        $metrics = $account->metric_values()->where('metric_description_id', $desc->id)->first();
+                                        if($metrics !== null){
+                                            echo $metrics->value;
+                                        }
+                                        
+                                    }
+                                @endphp 
+                                
+                            </td>
+                        @endforeach
+                    @endforeach
                 </tr>
-                <tr>
-                        <th>
-                                2
-                        </th>
-                        <td>
-                            Company 2
-                        </td>
-                        <td class="td">
-                            #200
-                        </td>
-                        <td class="td">
-                            1,000,122
-                        </td>
-                        <td class="td">
-                            1,123,004
-                        </td>
-                        <td class="td">
-                            500,234
-                        </td>
-                    </tr>
+                
+                @endforeach
             </tbody>
         </table>
 </div>

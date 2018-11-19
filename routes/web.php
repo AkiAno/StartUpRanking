@@ -16,9 +16,10 @@ Auth::routes();
 Route::view('/news', 'pages/news');
 Route::view('/', 'app');
 
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/alexa','AlexaController@index');
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-// @MS:
-Route::get('/alexa', 'AlexaController@index');
+Route::get('/{id}','PageController@show');
 

@@ -2,15 +2,11 @@
 /**
  * Makes a request to AWIS for site info.
  */
-
 // @MS: ADDED BY ME
- namespace App\APIs; 
+ namespace App\APIs;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
-
-
  class UrlInfo {
-
     protected static $ActionName        = 'UrlInfo';
     protected static $ResponseGroupName = 'Rank,LinksInCount';
     protected static $ServiceHost      = 'awis.amazonaws.com';
@@ -22,8 +18,6 @@ use Carbon\Carbon;
     protected static $ServiceURI = "/api";
     protected static $ServiceRegion = "us-west-1";
     protected static $ServiceName = "awis";
-
-
     //@MS: CHANGED BY ME
     //  public function UrlInfo($accessKeyId, $secretAccessKey, $site) {
       public function __construct($accessKeyId, $secretAccessKey, $site) {
@@ -33,9 +27,7 @@ use Carbon\Carbon;
         $now = time();
         $this->amzDate = gmdate("Ymd\THis\Z", $now);
         $this->dateStamp = gmdate("Ymd", $now);
-
     }
-
     /**
      * Get site info from AWIS.
      */
@@ -51,18 +43,13 @@ use Carbon\Carbon;
         $signingKey = $this->getSignatureKey();
         $signature = hash_hmac('sha256', $stringToSign, $signingKey);
         $authorizationHeader = $algorithm . ' ' . 'Credential=' . $this->accessKeyId . '/' . $credentialScope . ', ' .  'SignedHeaders=' . $signedHeaders . ', ' . 'Signature=' . $signature;
-
         $url = 'https://' . self::$ServiceHost . self::$ServiceURI . '?' . $canonicalQuery;
         $ret = self::makeRequest($url, $authorizationHeader);
-        echo "\nResults for " . $this->site .":\n\n";
-        echo $ret;
-        self::parseResponse($ret);
+        return self::parseResponse($ret);
     }
-
     protected function sign($key, $msg) {
         return hash_hmac('sha256', $msg, $key, true);
     }
-
     protected function getSignatureKey() {
         $kSecret = 'AWS4' . $this->secretAccessKey;
         $kDate = $this->sign($kSecret, $this->dateStamp);
@@ -71,7 +58,6 @@ use Carbon\Carbon;
         $kSigning = $this->sign($kService, 'aws4_request');
         return $kSigning;
     }
-
     /**
      * Builds headers for the request to AWIS.
      * @return String headers for the request
@@ -92,7 +78,6 @@ use Carbon\Carbon;
         }
         return ($list) ? implode("\n",$keyvalue) . "\n" : implode(';',$keyvalue) ;
     }
-
     /**
      * Builds query parameters for the request to AWIS.
      * Parameter names will be in alphabetical order and
@@ -114,7 +99,6 @@ use Carbon\Carbon;
         }
         return implode('&',$keyvalue);
     }
-
     /**
      * Makes request to AWIS
      * @param String $url   URL to make request to
@@ -136,30 +120,33 @@ use Carbon\Carbon;
         curl_close($ch);
         return $result;
     }
-
     /**
      * Parses XML response from AWIS and displays selected data
      * @param String $response    xml response from AWIS
      */
     public static function parseResponse($response) {
 //@MS: SimpleXMLElement to \SimpleXMLElement
-        $xml = new \SimpleXMLElement($response,LIBXML_ERR_ERROR,false,'http://awis.amazonaws.com/doc/2005-07-11');
+        try {
+            $xml = new \SimpleXMLElement($response,LIBXML_ERR_ERROR,false,'http://awis.amazonaws.com/doc/2005-07-11');
+        } catch (exception $e) {
+            echo "<br>Error parsing API response: ".$e;
+            echo "<br>Received response: ".$response;
+            echo "<br>";
+        }
         if($xml->count() && $xml->Response->UrlInfoResult->Alexa->count()) {
             $info = $xml->Response->UrlInfoResult->Alexa;
             $nice_array = array(
-                'Links In Count' => $info->ContentData->LinksInCount,
-                'Rank'           => $info->TrafficData->Rank
+                'Links In Count' => (string)$info->ContentData->LinksInCount,
+                'Rank'           => (string)$info->TrafficData->Rank
             );
         }
         foreach($nice_array as $k => $v) {
             echo $k . ': ' . $v ."\n";
         }
+        return $nice_array;
     }
-
 }
-
 // @MS: UNCOMMENTED BY ME
-
 //if (count($argv) < 4) {
 //    echo "Usage: $argv[0] ACCESS_KEY_ID SECRET_ACCESS_KEY site\n";
 //    exit(-1);
@@ -169,8 +156,6 @@ use Carbon\Carbon;
 //    $secretAccessKey = $argv[2];
 //    $site = $argv[3];
 //}
-
 //$urlInfo = new UrlInfo($accessKeyId, $secretAccessKey, $site);
 //$urlInfo->getUrlInfo();
-
 ?>

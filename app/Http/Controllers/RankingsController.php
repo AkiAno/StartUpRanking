@@ -36,7 +36,9 @@ class RankingsController extends Controller
            //->orderByRaw('((today_value / past_value) - 1) desc')
            // -> this will give you order by % CHANGE
 
-           ->limit(10)->get();
+           //->limit(10)->get();
+           ->paginate(10);
+           
       
 
        //foreach($accounts as $acc){
@@ -107,7 +109,7 @@ class RankingsController extends Controller
  
    
  
-        $accounts = Account::select([
+        $accounts = Account::with('company')->select([
                 '*',
                 DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                 DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')

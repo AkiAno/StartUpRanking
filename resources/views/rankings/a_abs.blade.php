@@ -48,8 +48,8 @@
                             <!-- IN ALEXA => PAST - minus - PRESENT -->
                             <td align="right"><?= $acc->past_value - $acc->today_value ?></td>
                             
-                            <td align="center"><?= $acc->company_id ?></td>
-                            <td><?= $acc->handle ?></td>
+                            <td align="center"><?= $acc->company->name ?></td>
+                            <td><a href="http://www.<?= $acc->handle ?>"><?= $acc->handle ?></td>
                             
                             <td><?= $acc ?></td>
                         </tr>
@@ -58,6 +58,8 @@
                         
                           @endforeach
                         </table>
+
+                        {{ $accounts->links() }}
 
                        
                         <div class="bottom">

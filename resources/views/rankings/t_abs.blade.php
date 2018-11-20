@@ -37,7 +37,8 @@ table {
 </style>
 
             <div class="big">
-            <h1><b>TWITTER GROWTH -> 1 month</b></h1>        
+            <h1><b>TWITTER GROWTH -> 1 month</b></h1>  
+                 
             <table>
 
 
@@ -53,7 +54,7 @@ table {
                         
                             <td align="right"><b><h2><?= $acc->today_value - $acc->past_value ?></h2><b></td>
                             
-                            <td align="center"><?= $acc->company_id ?></td>
+                            <td align="center"><?= $acc->company->name ?></td>
                             <td align="left"><?= $acc->handle ?></td>
                             
                             <td><?= $acc ?></td>

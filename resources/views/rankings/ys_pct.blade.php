@@ -53,15 +53,15 @@ th {
 <div class="big">
 
             <div class="month">
-               <div class="left"><h1>INSTAGRAM FOLLOWERS GROWTH</h1></div> 
+               <div class="left"><h1>YOUTUBE SUBSCRIBERS % GROWTH</h1></div> 
                <div class="1month">(1 month)</div>        
             </div>
             <table>
 
 
                         <tr>
-                            <th>Company</th>
-                            <th>Followers Increase</th>
+                                <th>Company</th>
+                            <th>Subscribers Increase</th>
                             
                             <th align="right">Start Value</th>
                             <th align="right">Latest Value</th>
@@ -73,7 +73,7 @@ th {
                             @foreach ($accounts as $acc)
                             <td align="left"><a href="<?= $acc->company->id ?>"><?= $acc->company->name ?></td>
                             <!-- IN ALEXA => PAST - minus - PRESENT -->
-                            <td align="right"><b><?= number_format($acc->today_value - $acc->past_value) ?></b></td>
+                            <td align="right"><b><?= number_format((($acc->today_value / $acc->past_value) -1)*100, 1)."%" ?></b></td>
                             
                             
                             

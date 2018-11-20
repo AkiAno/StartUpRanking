@@ -6,58 +6,81 @@
 @section('content')
 
 <style>
-
 .big {
-  margin: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
 }  
+
+.month {
+    display: flex;
+  min-width: 150px;
+  height: 80px;
+  
+}
+
+.left {
+    text-align: left;
+}
+
+
 
 .bottom {
   display: flex;
   justify-content: space-around; 
-  height: 80px;
+  height: 40px;
   align-items: center;
+  
 
 }
 
 table {
     display: flex;
     text-align: right;
-    margin: 80px;
+    width: 100%;
     
 } 
 .td {
     width: 200px;
 }
-.th {
+th {
     width: 200px;
+    text-align: center;
 }
 
-
-
 </style>
+<div class="big">
 
-            <div class="big">
-            <h1><b>TWITTER GROWTH -> 1 month</b></h1>  
-                 
+            <div class="month">
+               <div class="left"><h1>TWITTER FOLLOWERS GROWTH</h1></div> 
+               <div class="1month">(1 month)</div>        
+            </div>
             <table>
 
 
                         <tr>
+                            <th>Company</th>
+                            <th>Followers Increase</th>
                             
-                            <th>Growth</th>
-                            <th>Handle</th>
-                            <th align="left">Company</th>
+                            <th align="right">Start Value</th>
+                            <th align="right">Latest Value</th>
+                            <th>Website</th>
+                        
                         </tr>
+                        
                         <tr>
                             @foreach ($accounts as $acc)
-                            <!-- IN INSTA => TODAY - minus - PAST -->
-                        
-                            <td align="right"><b><h2><?= $acc->today_value - $acc->past_value ?></h2><b></td>
+                            <td align="left"><a href="<?= $acc->company->id ?>"><?= $acc->company->name ?></td>
+                            <!-- IN ALEXA => PAST - minus - PRESENT -->
+                            <td align="right"><b><?= number_format($acc->today_value - $acc->past_value) ?></b></td>
                             
-                            <td align="center"><?= $acc->company->name ?></td>
-                            <td align="left"><?= $acc->handle ?></td>
                             
-                            <td><?= $acc ?></td>
+                            
+                                <td align="right"><?= $acc->past_value ?></td>
+                                <td align="right"><?= $acc->today_value ?></td>
+                                <td><a href="http://www.<?= $acc->company->website ?>"><?= $acc->company->website ?></td>
+                            <!-- <td><= $acc ></td> -->
                         </tr>
                         
                           </tr>
@@ -65,22 +88,52 @@ table {
                           @endforeach
                         </table>
 
+                        {{ $accounts->links() }}
+
+                    </div>
                         <div class="bottom">
                                 <br><br>
-                                <a href="/alexarank_abs">Alexa</a> 
-                                <a href="/alexarank_pct">Alexa %</a> 
+                                <p>Alexa:
+
+                                <a href="/alexarank_abs">abs.</a> 
+                                <a href="/alexarank_pct">%</a> 
+                                </p>
+                                <p>
+                                Twitter:
+                                <a href="/twitrank_abs">abs.</a> 
+                                <a href="/twitrank_pct">%</a>
+                            </p>
+                            <p>
+                                    Instagram Followers:
+                                    <a href="/instarank_abs">abs.</a> 
+                                <a href="/instarank_pct">%</a> 
+                                Posts:
+                                <a href="/instaprank_abs">abs.</a> 
+                                <a href="/instaprank_pct">%</a> 
+
+                                </p><p>
+                                        Youtube Views:
+                                        <a href="/youvrank_abs">abs.</a> 
+                                <a href="/youvrank_pct">%</a> 
+                                    Subscribers:
+                                    
+                                        <a href="/yousrank_abs">abs.</a> 
+                                <a href="/yousrank_pct">%</a> 
+                                    </p>
+                        
+                                
+
+                                
+                               
+<!--
                                 <a href="/youvrank_abs">Youtube Views</a> 
                                 <a href="/youvrank_pct">Youtube Views %</a> 
-                                <a href="/twitrank_abs">Twitter</a> 
-                                <a href="/twitrank_pct">Twitter %</a> 
-                                <a href="/instarank_abs">Instagram</a> 
-                                <a href="/instarank_pct">Instagram %</a> 
+                                 
+                                
+-->
                               </div>
                               <br><br><br>
-                              </div>
-
-                       
-
+                             
 
 
 

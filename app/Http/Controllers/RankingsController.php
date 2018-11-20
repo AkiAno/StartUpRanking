@@ -23,8 +23,8 @@ class RankingsController extends Controller
        $past = '2018-11-03 00:00:00';
 
   
-
-       $accounts = Account::select([
+        //  OLD: = Account::select
+       $accounts = Account::with('company')->select([
                '*',
                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -64,7 +64,7 @@ class RankingsController extends Controller
  
    
  
-        $accounts = Account::select([
+        $accounts = Account::with('company')->select([
                 '*',
                 DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                 DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -76,7 +76,8 @@ class RankingsController extends Controller
             ->orderByRaw('((past_value / today_value) - 1) desc')
             // -> this will give you order by % CHANGE
  
-            ->limit(10)->get();
+            //->limit(10)->get();
+            ->paginate(10);
        
  
         //foreach($accounts as $acc){
@@ -95,7 +96,7 @@ class RankingsController extends Controller
 //////////////////////////////////////////////////////////////////
 
 
-     // INSTAGRAM
+     // INSTAGRAM FOLLOWERS
 
 
      
@@ -121,7 +122,8 @@ class RankingsController extends Controller
             //->orderByRaw('((today_value / past_value) - 1) desc')
             // -> this will give you order by % CHANGE
  
-            ->limit(10)->get();
+            //->limit(10)->get();
+            ->paginate(10);
        
  
         //foreach($accounts as $acc){
@@ -147,7 +149,7 @@ class RankingsController extends Controller
      
        
      
-            $accounts = Account::select([
+            $accounts = Account::with('company')->select([
                     '*',
                     DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                     DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -159,7 +161,9 @@ class RankingsController extends Controller
                 //->orderByRaw('((today_value / past_value) - 1) desc')
                 // -> this will give you order by % CHANGE
      
-                ->limit(10)->get();
+                //->limit(10)->get();
+                ->paginate(10);
+
            
      
             //foreach($accounts as $acc){
@@ -174,6 +178,92 @@ class RankingsController extends Controller
          return view('rankings/i_pct', compact('accounts'));
      
             }
+
+
+// INSTAGRAM POSTS
+
+ 
+
+
+     
+ public function instap_absolute_ten(){
+    $description = Metric_description::find(6);  // INSTAGRAM POSTS
+
+    // $today = date('Y-m-d 0:0:0', time());
+    $today = '2018-11-16';
+    // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+    $past = '2018-11-03 00:00:00';
+
+
+
+    $accounts = Account::with('company')->select([
+            '*',
+            DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+            DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+        ])->where('network_id', $description->network_id)
+       
+       ->orderByRaw('(today_value - past_value) desc')
+        // -> this will give you Order by TOTAL CHANGE
+       
+        //->orderByRaw('((today_value / past_value) - 1) desc')
+        // -> this will give you order by % CHANGE
+
+        //->limit(10)->get();
+        ->paginate(10);
+   
+
+    //foreach($accounts as $acc){
+    //    print_r([
+    //        'company' => $acc->handle,
+    //        'diff' => $acc->today_value - $acc->past_value
+    //    ]);
+    
+
+ //return $accounts;
+
+ return view('rankings/ip_abs', compact('accounts'));
+
+    } 
+
+    public function instap_percentage_ten(){
+        $description = Metric_description::find(6);  // INSTAGRAM POSTS
+ 
+        // $today = date('Y-m-d 0:0:0', time());
+        $today = '2018-11-16';
+        // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+        $past = '2018-11-03 00:00:00';
+ 
+   
+ 
+        $accounts = Account::with('company')->select([
+                '*',
+                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+            ])->where('network_id', $description->network_id)
+           
+            ->orderByRaw('((today_value / past_value) - 1) desc')
+            // -> this will give you Order by TOTAL CHANGE
+           
+            //->orderByRaw('((today_value / past_value) - 1) desc')
+            // -> this will give you order by % CHANGE
+ 
+            //->limit(10)->get();
+            ->paginate(10);
+
+       
+ 
+        //foreach($accounts as $acc){
+        //    print_r([
+        //        'company' => $acc->handle,
+        //        'diff' => $acc->today_value - $acc->past_value
+        //    ]);
+        
+ 
+     //return $accounts;
+ 
+     return view('rankings/ip_pct', compact('accounts'));
+ 
+        }
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -190,7 +280,7 @@ class RankingsController extends Controller
      
        
      
-            $accounts = Account::select([
+            $accounts = Account::with('company')->select([
                     '*',
                     DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                     DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -202,7 +292,8 @@ class RankingsController extends Controller
                 //->orderByRaw('((today_value / past_value) - 1) desc')
                 // -> this will give you order by % CHANGE
      
-                ->limit(10)->get();
+                //->limit(10)->get();
+                ->paginate(10);
            
      
             //foreach($accounts as $acc){
@@ -228,7 +319,7 @@ class RankingsController extends Controller
          
            
          
-                $accounts = Account::select([
+                $accounts = Account::with('company')->select([
                         '*',
                         DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                         DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -240,7 +331,8 @@ class RankingsController extends Controller
                     //->orderByRaw('((today_value / past_value) - 1) desc')
                     // -> this will give you order by % CHANGE
          
-                    ->limit(10)->get();
+                    //->limit(10)->get();
+                    ->paginate(10);    
                
          
                 //foreach($accounts as $acc){
@@ -269,7 +361,7 @@ class RankingsController extends Controller
              
                
              
-                    $accounts = Account::select([
+                    $accounts = Account::with('company')->select([
                             '*',
                             DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                             DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -281,8 +373,8 @@ class RankingsController extends Controller
                         //->orderByRaw('((today_value / past_value) - 1) desc')
                         // -> this will give you order by % CHANGE
              
-                        ->limit(10)->get();
-                   
+                        //->limit(10)->get();
+                        ->paginate(10);
              
                     //foreach($accounts as $acc){
                     //    print_r([
@@ -307,7 +399,7 @@ class RankingsController extends Controller
                  
                    
                  
-                        $accounts = Account::select([
+                        $accounts = Account::with('company')->select([
                                 '*',
                                 DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
                                 DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
@@ -319,7 +411,8 @@ class RankingsController extends Controller
                             //->orderByRaw('((today_value / past_value) - 1) desc')
                             // -> this will give you order by % CHANGE
                  
-                            ->limit(10)->get();
+                            //->limit(10)->get();
+                            ->paginate(10);    
                        
                  
                         //foreach($accounts as $acc){
@@ -335,6 +428,85 @@ class RankingsController extends Controller
                  
                         } 
 
+
+    // YOUTUBE SUBSCRIBERS
+
+    public function ysubs_absolute_ten(){
+        $description = Metric_description::find(7);  // YOUTUBE VIDEO VIEWS
+ 
+        // $today = date('Y-m-d 0:0:0', time());
+        $today = '2018-11-16';
+        // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+        $past = '2018-11-03 00:00:00';
+ 
+   
+ 
+        $accounts = Account::with('company')->select([
+                '*',
+                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+            ])->where('network_id', $description->network_id)
+           
+           ->orderByRaw('(today_value - past_value) desc')
+            // -> this will give you Order by TOTAL CHANGE
+           
+            //->orderByRaw('((today_value / past_value) - 1) desc')
+            // -> this will give you order by % CHANGE
+ 
+            //->limit(10)->get();
+            ->paginate(10);
+ 
+        //foreach($accounts as $acc){
+        //    print_r([
+        //        'company' => $acc->handle,
+        //        'diff' => $acc->today_value - $acc->past_value
+        //    ]);
+        
+ 
+     //return $accounts;
+ 
+     return view('rankings/ys_abs', compact('accounts'));
+ 
+        } 
+
+        public function ysubs_percentage_ten(){
+            $description = Metric_description::find(7);  // TWITTER FOLLOWERS
+     
+            // $today = date('Y-m-d 0:0:0', time());
+            $today = '2018-11-16';
+            // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+            $past = '2018-11-03 00:00:00';
+     
+       
+     
+            $accounts = Account::with('company')->select([
+                    '*',
+                    DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                    DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+                ])->where('network_id', $description->network_id)
+               
+                ->orderByRaw('((today_value / past_value) - 1) desc')
+                // -> this will give you Order by TOTAL CHANGE
+               
+                //->orderByRaw('((today_value / past_value) - 1) desc')
+                // -> this will give you order by % CHANGE
+     
+                //->limit(10)->get();
+                ->paginate(10);    
+           
+     
+            //foreach($accounts as $acc){
+            //    print_r([
+            //        'company' => $acc->handle,
+            //        'diff' => $acc->today_value - $acc->past_value
+            //    ]);
+            
+     
+         //return $accounts;
+     
+         return view('rankings/ys_pct', compact('accounts'));
+     
+            }
 
     
 }

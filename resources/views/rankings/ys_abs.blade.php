@@ -53,7 +53,7 @@ th {
 <div class="big">
 
             <div class="month">
-               <div class="left"><h1>INSTAGRAM FOLLOWERS GROWTH</h1></div> 
+               <div class="left"><h1>YOUTUBE SUBSCRIBERS GROWTH</h1></div> 
                <div class="1month">(1 month)</div>        
             </div>
             <table>
@@ -61,7 +61,7 @@ th {
 
                         <tr>
                             <th>Company</th>
-                            <th>Followers Increase</th>
+                            <th>Subscribers Increase</th>
                             
                             <th align="right">Start Value</th>
                             <th align="right">Latest Value</th>

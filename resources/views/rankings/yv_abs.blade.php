@@ -33,7 +33,7 @@
 
 </style>
 <div class="big">
-            <h1><b>INSTAGRAM GROWTH -> 1 month</b></h1>        
+            <h1><b>YOUTUBE VIEWS GROWTH -> 1 month</b></h1>        
             <table>
 
 
@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             @foreach ($accounts as $acc)
-                            <!-- IN INSTA => TODAY - minus - PAST -->
+                            
                             <td align="right"><?= $acc->today_value - $acc->past_value ?></td>
                             
                             <td align="center"><?= $acc->company_id ?></td>
@@ -60,18 +60,18 @@
 
                        
                         <div class="bottom">
-                                <br><br>
-                                <a href="/alexarank_abs">Alexa</a> 
-                                <a href="/alexarank_pct">Alexa %</a> 
-                                <a href="/youvrank_abs">Youtube Views</a> 
-                                <a href="/youvrank_pct">Youtube Views %</a> 
-                                <a href="/twitrank_abs">Twitter</a> 
-                                <a href="/twitrank_pct">Twitter %</a> 
-                                <a href="/instarank_abs">Instagram</a> 
-                                <a href="/instarank_pct">Instagram %</a> 
-                              </div>
-                              <br><br><br>
-                              </div>
+                            <br><br>
+                            <a href="/alexarank_abs">Alexa</a> 
+                            <a href="/alexarank_pct">Alexa %</a> 
+                            <a href="/youvrank_abs">Youtube Views</a> 
+                            <a href="/youvrank_pct">Youtube Views %</a> 
+                            <a href="/twitrank_abs">Twitter</a> 
+                            <a href="/twitrank_pct">Twitter %</a> 
+                            <a href="/instarank_abs">Instagram</a> 
+                            <a href="/instarank_pct">Instagram %</a> 
+                          </div>
+                          <br><br><br>
+                          </div>
 
 
 

@@ -23,9 +23,17 @@ Route::get('/alexa','AlexaController@index');
 // ALEXA RANK TABLEs
 Route::get('/alexarank_abs', 'RankingsController@alexa_absolute_ten');
 Route::get('/alexarank_pct', 'RankingsController@alexa_percentage_ten');
-// IMNSTAGRAM FOLLOWERS TABLEs
+// INSTAGRAM FOLLOWERS TABLEs
 Route::get('/instarank_abs', 'RankingsController@insta_absolute_ten');
 Route::get('/instarank_pct', 'RankingsController@insta_percentage_ten');
+// TWITTER FOLLOWERS TABLES
+Route::get('/twitrank_abs', 'RankingsController@twitter_absolute_ten');
+Route::get('/twitrank_pct', 'RankingsController@twitter_percentage_ten');
+// YOUTUBE VIDEO VIEWS TABLES
+Route::get('/youvrank_abs', 'RankingsController@yviews_absolute_ten');
+Route::get('/youvrank_pct', 'RankingsController@yviews_percentage_ten');
+
+
 
 Route::get('/{id}','PageController@show');
 

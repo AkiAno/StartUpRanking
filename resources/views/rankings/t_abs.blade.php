@@ -19,9 +19,10 @@
 
 }
 
-.table {
+table {
     display: flex;
     text-align: right;
+    margin: 80px;
     
 } 
 .td {
@@ -31,24 +32,29 @@
     width: 200px;
 }
 
+
+
 </style>
-<div class="big">
-            <h1><b>INSTAGRAM GROWTH -> 1 month</b></h1>        
+
+            <div class="big">
+            <h1><b>TWITTER GROWTH -> 1 month</b></h1>        
             <table>
 
 
                         <tr>
-                            <th>Rank+</th>
+                            
+                            <th>Growth</th>
                             <th>Handle</th>
-                            <th>Company</th>
+                            <th align="left">Company</th>
                         </tr>
                         <tr>
                             @foreach ($accounts as $acc)
                             <!-- IN INSTA => TODAY - minus - PAST -->
-                            <td align="right"><?= $acc->today_value - $acc->past_value ?></td>
+                        
+                            <td align="right"><b><h2><?= $acc->today_value - $acc->past_value ?></h2><b></td>
                             
                             <td align="center"><?= $acc->company_id ?></td>
-                            <td><?= $acc->handle ?></td>
+                            <td align="left"><?= $acc->handle ?></td>
                             
                             <td><?= $acc ?></td>
                         </tr>
@@ -58,7 +64,6 @@
                           @endforeach
                         </table>
 
-                       
                         <div class="bottom">
                                 <br><br>
                                 <a href="/alexarank_abs">Alexa</a> 
@@ -72,6 +77,9 @@
                               </div>
                               <br><br><br>
                               </div>
+
+                       
+
 
 
 

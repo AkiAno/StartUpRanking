@@ -31,21 +31,24 @@
     width: 200px;
 }
 
+
+
 </style>
 <div class="big">
-            <h1><b>INSTAGRAM GROWTH -> 1 month</b></h1>        
+            <h1><b>YOUTUBE % GROWTH -> 1 month</b></h1>        
             <table>
 
 
                         <tr>
-                            <th>Rank+</th>
+                            <th>Growth %</th>
                             <th>Handle</th>
                             <th>Company</th>
                         </tr>
                         <tr>
                             @foreach ($accounts as $acc)
-                            <!-- IN INSTA => TODAY - minus - PAST -->
-                            <td align="right"><?= $acc->today_value - $acc->past_value ?></td>
+                            <td align="right"><b><h3><?= (int)((($acc->today_value / $acc->past_value) -1)*100)."%" ?></h3></b></td>
+
+                            
                             
                             <td align="center"><?= $acc->company_id ?></td>
                             <td><?= $acc->handle ?></td>
@@ -59,25 +62,19 @@
                         </table>
 
                        
-                        <div class="bottom">
-                                <br><br>
-                                <a href="/alexarank_abs">Alexa</a> 
-                                <a href="/alexarank_pct">Alexa %</a> 
-                                <a href="/youvrank_abs">Youtube Views</a> 
-                                <a href="/youvrank_pct">Youtube Views %</a> 
-                                <a href="/twitrank_abs">Twitter</a> 
-                                <a href="/twitrank_pct">Twitter %</a> 
-                                <a href="/instarank_abs">Instagram</a> 
-                                <a href="/instarank_pct">Instagram %</a> 
-                              </div>
-                              <br><br><br>
-                              </div>
 
-
-
-
-
-
-
+<div class="bottom">
+  <br><br>
+  <a href="/alexarank_abs">Alexa</a> 
+  <a href="/alexarank_pct">Alexa %</a> 
+  <a href="/youvrank_abs">Youtube Views</a> 
+  <a href="/youvrank_pct">Youtube Views %</a> 
+  <a href="/twitrank_abs">Twitter</a> 
+  <a href="/twitrank_pct">Twitter %</a> 
+  <a href="/instarank_abs">Instagram</a> 
+  <a href="/instarank_pct">Instagram %</a> 
+</div>
+<br><br><br>
+</div>
 
 @endsection

@@ -31,21 +31,27 @@
     width: 200px;
 }
 
+.growth {
+    width: 100px;
+}
+
 </style>
 <div class="big">
-            <h1><b>INSTAGRAM GROWTH -> 1 month</b></h1>        
+
+            <h1><b>TWITTER % GROWTH -> 1 month</b></h1>        
             <table>
 
 
                         <tr>
-                            <th>Rank+</th>
+                            <th class="growth">Growth %</th>
                             <th>Handle</th>
                             <th>Company</th>
                         </tr>
                         <tr>
                             @foreach ($accounts as $acc)
-                            <!-- IN INSTA => TODAY - minus - PAST -->
-                            <td align="right"><?= $acc->today_value - $acc->past_value ?></td>
+                            <td align="right"><b><?= (int)((($acc->today_value / $acc->past_value) -1)*100)."%" ?></b></td>
+
+                            
                             
                             <td align="center"><?= $acc->company_id ?></td>
                             <td><?= $acc->handle ?></td>
@@ -58,7 +64,6 @@
                           @endforeach
                         </table>
 
-                       
                         <div class="bottom">
                                 <br><br>
                                 <a href="/alexarank_abs">Alexa</a> 
@@ -71,11 +76,7 @@
                                 <a href="/instarank_pct">Instagram %</a> 
                               </div>
                               <br><br><br>
-                              </div>
-
-
-
-
+                              </div>                
 
 
 

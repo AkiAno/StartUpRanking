@@ -6,6 +6,18 @@
 @section('content')
 
 <style>
+.big {
+  margin: 50px;
+}  
+
+.bottom {
+  display: flex;
+  justify-content: space-around; 
+  height: 80px;
+  align-items: center;
+
+}
+
 .table {
     display: flex;
     text-align: right;
@@ -19,6 +31,8 @@
 }
 
 </style>
+<div class="big">
+
 
             <h1><b>ALEXA RANK GROWTH -> 1 month</b></h1>        
             <table>
@@ -46,7 +60,19 @@
                         </table>
 
                        
-
+                        <div class="bottom">
+                                <br><br>
+                                <a href="/alexarank_abs">Alexa</a> 
+                                <a href="/alexarank_pct">Alexa %</a> 
+                                <a href="/youvrank_abs">Youtube Views</a> 
+                                <a href="/youvrank_pct">Youtube Views %</a> 
+                                <a href="/twitrank_abs">Twitter</a> 
+                                <a href="/twitrank_pct">Twitter %</a> 
+                                <a href="/instarank_abs">Instagram</a> 
+                                <a href="/instarank_pct">Instagram %</a> 
+                              </div>
+                              <br><br><br>
+                              </div>
 
 
 

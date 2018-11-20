@@ -90,10 +90,12 @@ class RankingsController extends Controller
  
         } 
 
-
+//////////////////////////////////////////////////////////////////
 
 
      // INSTAGRAM
+
+
      
      public function insta_absolute_ten(){
         $description = Metric_description::find(5);  // INSTAGRAM FOLLOWERS
@@ -169,6 +171,168 @@ class RankingsController extends Controller
      
          return view('rankings/i_pct', compact('accounts'));
      
+            }
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+        // TWITTER
+
+    
+        public function twitter_absolute_ten(){
+            $description = Metric_description::find(1);  // TWITTER FOLLOWERS
+     
+            // $today = date('Y-m-d 0:0:0', time());
+            $today = '2018-11-16';
+            // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+            $past = '2018-11-03 00:00:00';
+     
+       
+     
+            $accounts = Account::select([
+                    '*',
+                    DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                    DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+                ])->where('network_id', $description->network_id)
+               
+               ->orderByRaw('(today_value - past_value) desc')
+                // -> this will give you Order by TOTAL CHANGE
+               
+                //->orderByRaw('((today_value / past_value) - 1) desc')
+                // -> this will give you order by % CHANGE
+     
+                ->limit(10)->get();
+           
+     
+            //foreach($accounts as $acc){
+            //    print_r([
+            //        'company' => $acc->handle,
+            //        'diff' => $acc->today_value - $acc->past_value
+            //    ]);
+            
+     
+         //return $accounts;
+     
+         return view('rankings/t_abs', compact('accounts'));
+     
             } 
+    
+            public function twitter_percentage_ten(){
+                $description = Metric_description::find(1);  // TWITTER FOLLOWERS
+         
+                // $today = date('Y-m-d 0:0:0', time());
+                $today = '2018-11-16';
+                // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+                $past = '2018-11-03 00:00:00';
+         
+           
+         
+                $accounts = Account::select([
+                        '*',
+                        DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                        DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+                    ])->where('network_id', $description->network_id)
+                   
+                    ->orderByRaw('((today_value / past_value) - 1) desc')
+                    // -> this will give you Order by TOTAL CHANGE
+                   
+                    //->orderByRaw('((today_value / past_value) - 1) desc')
+                    // -> this will give you order by % CHANGE
+         
+                    ->limit(10)->get();
+               
+         
+                //foreach($accounts as $acc){
+                //    print_r([
+                //        'company' => $acc->handle,
+                //        'diff' => $acc->today_value - $acc->past_value
+                //    ]);
+                
+         
+             //return $accounts;
+         
+             return view('rankings/t_pct', compact('accounts'));
+         
+                } 
+
+
+    // YOUTUBE VIDEOS
+
+                public function yviews_absolute_ten(){
+                    $description = Metric_description::find(8);  // YOUTUBE VIDEO VIEWS
+             
+                    // $today = date('Y-m-d 0:0:0', time());
+                    $today = '2018-11-16';
+                    // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+                    $past = '2018-11-03 00:00:00';
+             
+               
+             
+                    $accounts = Account::select([
+                            '*',
+                            DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                            DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+                        ])->where('network_id', $description->network_id)
+                       
+                       ->orderByRaw('(today_value - past_value) desc')
+                        // -> this will give you Order by TOTAL CHANGE
+                       
+                        //->orderByRaw('((today_value / past_value) - 1) desc')
+                        // -> this will give you order by % CHANGE
+             
+                        ->limit(10)->get();
+                   
+             
+                    //foreach($accounts as $acc){
+                    //    print_r([
+                    //        'company' => $acc->handle,
+                    //        'diff' => $acc->today_value - $acc->past_value
+                    //    ]);
+                    
+             
+                 //return $accounts;
+             
+                 return view('rankings/yv_abs', compact('accounts'));
+             
+                    } 
+            
+                    public function yviews_percentage_ten(){
+                        $description = Metric_description::find(8);  // TWITTER FOLLOWERS
+                 
+                        // $today = date('Y-m-d 0:0:0', time());
+                        $today = '2018-11-16';
+                        // WE WANT ONE MONTH / ONE WEEK / ONE XY..
+                        $past = '2018-11-03 00:00:00';
+                 
+                   
+                 
+                        $accounts = Account::select([
+                                '*',
+                                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $today . '") as `today_value`'),
+                                DB::raw('(select `value` from `metric_values` where `value` IS NOT NULL and  `account_id` = `accounts`.`id` and `metric_description_id` = "' . $description->id . '" and `date` = "' . $past . '") as `past_value`')
+                            ])->where('network_id', $description->network_id)
+                           
+                            ->orderByRaw('((today_value / past_value) - 1) desc')
+                            // -> this will give you Order by TOTAL CHANGE
+                           
+                            //->orderByRaw('((today_value / past_value) - 1) desc')
+                            // -> this will give you order by % CHANGE
+                 
+                            ->limit(10)->get();
+                       
+                 
+                        //foreach($accounts as $acc){
+                        //    print_r([
+                        //        'company' => $acc->handle,
+                        //        'diff' => $acc->today_value - $acc->past_value
+                        //    ]);
+                        
+                 
+                     //return $accounts;
+                 
+                     return view('rankings/yv_pct', compact('accounts'));
+                 
+                        } 
+
+
     
 }

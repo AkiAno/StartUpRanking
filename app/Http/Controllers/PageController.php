@@ -12,9 +12,11 @@ class PageController extends Controller
     public function index(){
         // return 'im here';
         //displaying companies
+        $toDate = '2018-11-22';
+        $fromDate = '2018-10-01';
         $companies = Company::all();
         $networks = Network::all();
-        return view('pages/home',compact('companies','networks'));
+        return view('pages/home',compact('companies','networks','toDate','fromDate'));
     }
 
 

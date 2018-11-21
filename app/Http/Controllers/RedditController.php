@@ -43,12 +43,13 @@ class RedditController extends Controller
 
         $response = null;
         if($headline_urlsource_name_json!==''){
-        
+       
         $data_json=file_get_contents($headline_urlsource_name_json);
         
         // //echo $data_json;
         
         $json = json_decode($data_json);
+       
         
         // // echo $json->data->children[0]->kind;
         

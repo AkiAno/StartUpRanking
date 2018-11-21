@@ -75,7 +75,11 @@ class AlexaController extends Controller
     }
 
     public function index() {
+<<<<<<< HEAD
+        
+=======
 
+>>>>>>> fe57fe69210ea2041996450c0841ee58b727d7cb
         $allcompanies = Company::all();
 
         // Fetch Alexa data using API and add to DB for each company

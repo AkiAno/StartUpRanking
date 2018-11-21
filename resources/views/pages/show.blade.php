@@ -22,17 +22,27 @@
                                 
 
                                 @php 
-
                                     $account = $company->accounts()->where('network_id', $network->id)->first();
                                     
                                     if($account !== null){
 
                                     
-                                        $metrics = $account->metric_values()->where('metric_description_id', $desc->id)->first();
+                                        $metrics = $account->metric_values()->where('metric_description_id', $desc->id)->where('date', '=',$toDate)->orderBy('date','DESC')->get();
+
+                                        $metrics_old = $account->metric_values()->where('metric_description_id', $desc->id)->where('date', '=', $fromDate)->orderBy('date','DESC')->get();
+
+                                        
+                                        
                                         if($metrics !== null){
 
 
-                                            echo $network->name." ".$desc->description.": <b>".$metrics->value."</b><br>";
+                                            
+                                            if($metrics_old !== null){
+                                                $percentage_shift = 100 *($metrics - $metrics_old) / $metrics_old);
+                                                echo $network->name." ".$desc->description." ".$metrics." ".'('.number_format((float)$percentage_shift, 2, '.', '').'%)<br>';
+                                               // echo $network->name." ".$desc->description." ".$metrics->value."<br>";
+                                            }
+                                            
                                         }
                                         
                                     }

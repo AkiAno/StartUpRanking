@@ -43,6 +43,8 @@ Route::get('/youvrank_pct', 'RankingsController@yviews_percentage_ten');
 Route::get('/yousrank_abs', 'RankingsController@ysubs_absolute_ten');
 Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
+//GRAPH DEMO
+Route::get('/graphdemo','GraphsController@graph_demo');
 
 Route::get('/{id}','PageController@show');
 

@@ -1,9 +1,20 @@
 @extends('layouts.app')
 @section('content')
 
+
+
+<style>
+
+.sub {
+    margin: 50px;
+}
+
+</style>
+
+<div class="sub">
     <h1> {{$company->name}} </h1>
     <div>
-       WEBSITE: {{ $company->website }}
+       WEBSITE: <a href="http://www.{{ $company->website }}">{{ $company->website }}</a>
         <br>
        @foreach($networks as $network)
                         @foreach($network->metric_descriptions as $desc)
@@ -21,7 +32,7 @@
                                         if($metrics !== null){
 
 
-                                            echo $network->name." ".$desc->description." ".$metrics->value."<br>";
+                                            echo $network->name." ".$desc->description.": <b>".$metrics->value."</b><br>";
                                         }
                                         
                                     }
@@ -32,5 +43,6 @@
                     @endforeach
 
     </div>
+</div>
 
 @endsection

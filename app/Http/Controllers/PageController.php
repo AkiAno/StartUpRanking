@@ -27,8 +27,8 @@ class PageController extends Controller
     public function show($company){
         $company = Company::find($company);
         $networks = Network::all();
-        $toDate = '2018-11-22';
-        $fromDate = '2018-10-01';
+        $toDate = '2018-11-16';
+        $fromDate = '2018-11-04';
         // return $company;
         return view('pages/show', compact('company','networks','toDate','fromDate'));
     }

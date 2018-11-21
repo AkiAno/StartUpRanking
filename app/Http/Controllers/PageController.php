@@ -22,11 +22,11 @@ class PageController extends Controller
         return view('pages/news');
     }
 
-
     public function show($company){
         $company = Company::find($company);
         $networks = Network::all();
         // return $company;
         return view('pages/show', compact('company','networks'));
     }
+
 }

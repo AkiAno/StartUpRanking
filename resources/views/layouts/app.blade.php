@@ -44,6 +44,9 @@
                             <li class="nav-item">
                                 {{-- <a class="nav-link" href="{{action('PageController@news')}}">{{ __('News') }}</a> --}}
                             </li>
+                            <li class ="nav-item">
+                                <a class="nav-link" href="{{action('RedditController@index')}}">{{__('Reddit News')}}</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>

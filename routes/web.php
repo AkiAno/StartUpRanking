@@ -46,3 +46,10 @@ Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
 Route::get('/{id}','PageController@show');
 
+Route::get('/reddit', 'RedditController@index');
+Route::post('/reddit', 'RedditController@index');
+
+Route::get('/youtube', 'YoutubeController@index');
+
+
+

@@ -22,5 +22,5 @@ Route::get('/alexa','AlexaController@index');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/home','PageController@index');
-Route::get('/{id}','PageController@show');
+Route::get('/','PageController@index');
+Route::get('/home/{id}','PageController@show');

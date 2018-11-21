@@ -1,25 +1,25 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Chart from "./graphs/chart.js";
+import Navbar from "./navbar/Navbar";
+import Calendar from "./date-picker/date-picker";
 
-class App extends Component {
+class Header extends Component {
     render() {
         return (
             <BrowserRouter>
                 <div>
-                    {/* <Navbar />
+                    <Navbar />
                     <div className="container d-flex justify-content-center mt-4">
                         <Calendar id="date_one" />
                         <Calendar id="date_two" />
                         <button className="btn-submit">select</button>
-                    </div> */}
+                    </div>
                     <br />
-                    <Chart />
                 </div>
             </BrowserRouter>
         );
     }
 }
 
-ReactDOM.render(<App />, document.getElementById("react-graph"));
+ReactDOM.render(<Header />, document.getElementById("react-header"));

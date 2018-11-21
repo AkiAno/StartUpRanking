@@ -24,7 +24,6 @@ class PageController extends Controller
         return view('pages/news');
     }
 
-
     public function show($company){
         $company = Company::find($company);
         $networks = Network::all();
@@ -33,4 +32,5 @@ class PageController extends Controller
         // return $company;
         return view('pages/show', compact('company','networks','toDate','fromDate'));
     }
+
 }

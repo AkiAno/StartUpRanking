@@ -20,6 +20,11 @@
         "react-dom": "^16.3.1"
     },
     "dependencies": {
+<<<<<<< HEAD
+        "cheerio": "^1.0.0-rc.2",
+        "gulp": "^3.9.1",
+        "request": "^2.88.0"
+=======
         "bootstrap": "^4.1.1",
         "cookie-machine": "^0.1.1",
         "draft-convert": "^2.1.2",
@@ -34,5 +39,6 @@
         "react-dot-fragment": "^0.2.6",
         "react-images": "^0.5.17",
         "react-router-dom": "^4.3.1"
+>>>>>>> 08dfdec5e9c79793dd5e6397153be72d37d373b8
     }
 }

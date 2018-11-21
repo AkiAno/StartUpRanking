@@ -9,22 +9,20 @@
 
     <title>{{ config('app.name', 'StartUpAnalytics') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,600,700" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav id="nav-menu" class="navbar navbar-expand-md navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'StartUpAnalytics') }}
+                    {{ config('app.name', 'StartUpsToday') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -44,7 +42,7 @@
                                 <a class="nav-link" href="{{action('PageController@index')}}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{action('PageController@news')}}">{{ __('News') }}</a>
+                                {{-- <a class="nav-link" href="{{action('PageController@news')}}">{{ __('News') }}</a> --}}
                             </li>
                             <li class ="nav-item">
                                 <a class="nav-link" href="{{action('RedditController@index')}}">{{__('Reddit News')}}</a>

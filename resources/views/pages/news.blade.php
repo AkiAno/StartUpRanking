@@ -1,34 +1,18 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Startups Today</title>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div id="app"></div>
 
-<link rel="stylesheet" href="/css/main.css">
-
-@section('content')
-    <div class="container">
-        <h1>News</h1>
-        
-            <div class="news d-flex">
-                <div class="article">
-                    <h3>Latest News</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatem, dolores modi hic consectetur numquam incidunt facilis, aliquid nostrum laudantium culpa delectus vel esse nam rerum. Tempore est quas repudiandae.</p>
-                    <hr>
-                </div>
-                <div class="article">
-                        <h3>Future Expectations</h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatem, dolores modi hic consectetur numquam incidunt facilis, aliquid nostrum laudantium culpa delectus vel esse nam rerum. Tempore est quas repudiandae.</p>
-                        <hr>
-                </div>
-            </div>
-            <div class="news d-flex">
-                    <div class="article">
-                        <h3>Expert's Advice</h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatem, dolores modi hic consectetur numquam incidunt facilis, aliquid nostrum laudantium culpa delectus vel esse nam rerum. Tempore est quas repudiandae.</p>
-                        <hr>
-                    </div>
-                    <div class="article">
-                            <h3>Expert's Views</h3>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum voluptatem, dolores modi hic consectetur numquam incidunt facilis, aliquid nostrum laudantium culpa delectus vel esse nam rerum. Tempore est quas repudiandae.</p>
-                            <hr>
-                        </div>
-                </div>
-    </div>
-@endsection
+    <script src="{{ asset('js/news.js') }}"></script>
+</body>
+</html>

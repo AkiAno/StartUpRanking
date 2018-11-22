@@ -4,7 +4,7 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import "./date-picker.css";
 
-class Calendar extends React.Component {
+class Picker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,4 +30,4 @@ class Calendar extends React.Component {
     }
 }
 
-export default Calendar;
+export default Picker;

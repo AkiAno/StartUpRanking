@@ -8,12 +8,6 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    {/* <Navbar />
-                    <div className="container d-flex justify-content-center mt-4">
-                        <Calendar id="date_one" />
-                        <Calendar id="date_two" />
-                        <button className="btn-submit">select</button>
-                    </div> */}
                     <br />
                     <Chart />
                 </div>

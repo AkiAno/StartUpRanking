@@ -4,30 +4,7 @@
 
 
 @section('content')
-
-<div id="react-header"></div>
-
-{{-- <div class="container flex">
-      <div class="example"></div>x
-    <div class="month">
-        <label>
-            Month
-            <input type="radio" data-role="segmented" name="view" value="month" class="md-view-change"  checked>
-        </label>
-        <div id="demo"></div>
-    </div>
-    <div class="month">
-        <label>
-            Month
-            <input type="radio" data-role="segmented" name="view" value="month" class="md-view-change"  checked>
-        </label>
-        <div id="demo"></div>
-    </div>
-</div> --}}
-
-
-
-
+<div id="date-picker"></div>
 <div class="data container">
         <table class="table table-lg-responsive">
             <thead>
@@ -85,14 +62,6 @@
             </tbody>
         </table>
 </div>
-
-<div id="react-graph">
-</div>
-
-<div id="react-footer"></div>
-
 <script src="{{mix('js/app.js')}}"></script> 
-<script src="{{mix('js/header.js')}}"></script> 
-<script src="{{mix('js/footer.js')}}"></script> 
-
+<script src="{{mix('js/calendar.js')}}"></script> 
 @endsection

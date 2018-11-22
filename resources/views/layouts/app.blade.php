@@ -15,9 +15,36 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
+    
+        <nav id="nav-menu" class="navbar navbar-expand-md navbar-laravel">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <div className="container">
+                            <a id="link" class="navbar-brand" to="/">
+                                <span class="start">Start</span>
+                                <span class="ups">ups</span>
+                                <span class="today">Today</span>
+                            </a>
+                        </div>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="/news">News</a>
+                </li>
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="#">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div id="app">
            
 
@@ -26,5 +53,10 @@
         </main>
     </div>
     
+    <div class="footer fixed-bottom d-flex align-items-lg-center justify-content-lg-center">
+            copyright @Startups Today
+    </div>
+
+
 </body>
 </html>

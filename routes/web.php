@@ -13,9 +13,6 @@
 
 Auth::routes();
 
-Route::get('/', 'PageController@index');
-Route::get('/news', 'PageController@news');
-
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/alexa','AlexaController@index');
 
@@ -43,6 +40,5 @@ Route::get('/youvrank_pct', 'RankingsController@yviews_percentage_ten');
 Route::get('/yousrank_abs', 'RankingsController@ysubs_absolute_ten');
 Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
-
-Route::get('/','PageController@index');
-Route::get('/home/{id}','PageController@show');
+Route::get('/', 'PageController@index');
+Route::get('/{id}', 'PageController@show');

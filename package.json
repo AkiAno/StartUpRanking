@@ -20,19 +20,8 @@
         "react-dom": "^16.3.1"
     },
     "dependencies": {
-        "bootstrap": "^4.1.1",
-        "cookie-machine": "^0.1.1",
-        "draft-convert": "^2.1.2",
-        "draft-js": "^0.10.5",
-        "konva": "^2.5.0",
-        "moment": "^2.22.2",
-        "popper": "^1.0.1",
-        "popper.js": "^1.14.5",
-        "random-string": "^0.2.0",
-        "react-addons-update": "^15.6.2",
-        "react-datepicker": "^1.8.0",
-        "react-dot-fragment": "^0.2.6",
-        "react-images": "^0.5.17",
-        "react-router-dom": "^4.3.1"
+        "cheerio": "^1.0.0-rc.2",
+        "gulp": "^3.9.1",
+        "request": "^2.88.0"
     }
 }

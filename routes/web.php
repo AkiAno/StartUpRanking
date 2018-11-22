@@ -40,11 +40,6 @@ Route::get('/youvrank_pct', 'RankingsController@yviews_percentage_ten');
 Route::get('/yousrank_abs', 'RankingsController@ysubs_absolute_ten');
 Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
-Route::get('/', 'PageController@index');
-Route::get('/{id}', 'PageController@show');
-Route::get('/api/dates', 'PageController@display');
-
-
 
 Route::get('/reddit', 'RedditController@index');
 Route::post('/reddit', 'RedditController@index');
@@ -52,5 +47,9 @@ Route::post('/reddit', 'RedditController@index');
 Route::get('/youtube', 'YoutubeController@index');
 
 Route::get('/', 'PageController@index');
-Route::get('/{id}','PageController@show');
+Route::get('/{id}', 'PageController@show');
+Route::get('/api/dates', 'PageController@display');
+
+
+
 

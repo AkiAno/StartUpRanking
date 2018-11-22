@@ -46,13 +46,12 @@
         </div>
     </nav>
     <div id="app">
-           
-
         <main>
             @yield('content')
         </main>
     </div>
-    
+    <br>
+    <br>
     <div class="footer fixed-bottom d-flex align-items-lg-center justify-content-lg-center">
             copyright @Startups Today
     </div>

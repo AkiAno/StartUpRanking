@@ -34,8 +34,13 @@ class PageController extends Controller
     }
 
     public function display(Request $request) {
-        $fromDate = $request->from;
-        $toDate = $request->to;
+        $first_date = $request->from;
+        $second_date = $request->to;
+
+        $fromDate = date("Y-m-d",strtotime($first_date));
+        $toDate = date("Y-m-d",strtotime($second_date));
+
+        // $companies = Company::where('created_at','>=',date("Y-m-d",strtotime($first_date)))->where('created_at','<=',date("Y-m-d",strtotime($second_date)))->orderBy('id', 'ASC')->get();
         $companies = Company::all();
         $networks = Network::all();
         return view('pages/table', compact('companies', 'networks','toDate','fromDate'));

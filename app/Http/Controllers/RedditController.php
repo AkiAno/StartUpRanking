@@ -112,7 +112,7 @@ class RedditController extends Controller
     }
 
 
-        return view('pages/reddit', ['arr' => $arr, 'headline_urlsource_name' => $headline_urlsource_name, 'checked_new' => $checked_new, 'checked_top' => $checked_top, 'response'=> $response, 'sentenceEvaluation' => $sentenceEvaluation]);
+        return view('pages/reddit', ['arr' => $arr, 'headline_urlsource_name' => $headline_urlsource_name, 'checked_new' => $checked_new, 'checked_top' => $checked_top, 'response'=> $response]);
 
     }
 

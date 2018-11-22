@@ -66,9 +66,9 @@
                                     if($account !== null){
 
                                     
-                                        $metrics_prev = $account->metric_values()->where('metric_description_id', $desc->id)->where('date', '=', $fromDate)->orderBy('date','DESC')->first();
+                                        $metrics_prev = $account->metric_values()->where('metric_description_id', $desc->id)->where('date', '>=', $fromDate)->where('date', '<=',$toDate)->orderBy('date','DESC')->first();
 
-                                        $metrics_cur = $account->metric_values()->where('metric_description_id', $desc->id)->where('date', '=',$toDate)->orderBy('date','DESC')->first();
+                                        $metrics_cur = $account->metric_values()->where('metric_description_id', $desc->id)->where('date', '>=', $fromDate)->where('date', '<=',$toDate)->orderBy('date','ASC')->first();
                                         // dd($metrics->value, $metrics_old->value);
                                         if($metrics_prev !== null){
                                             if($metrics_cur->value !== null){

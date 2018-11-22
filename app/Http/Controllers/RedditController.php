@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\APIs\UrlInfo;
+use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
+
 
 class RedditController extends Controller
 {
@@ -79,12 +81,21 @@ class RedditController extends Controller
             } else {
                 continue; // skip the Reddit "Self" posts
             }
+
+            //dd($post_title);
+            $analysis = new SentimentAnalysis;
+            //dd($analysis->isPositive($post_title));
+            dd($analysis->decision($post_title));
+
+
+
         
         
             $string_output .= '<div>';
             $string_output .= '<h3 style="display:inline;">' . $post_title . '</h3> |';
             $string_output .= '<a href="' . $post_url . '" target="_blank">' . $post_url . '</a><br>';
             $string_output .= '</div>';
+            //dd($string_output);
         
         
             $x++;
@@ -102,3 +113,19 @@ class RedditController extends Controller
     }
 
 }
+
+// class SentimentAnalysisTest extends PHPUnit_Framework_TestCase
+// {
+//     public $sentiment;
+//     public function setUp()
+//     {
+//         parent::setUp();
+//         $this->sentiment = new SentimentAnalysis();
+//     }
+//     public function testIsPositive()
+//     {
+//         $this->assertEquals(true, $this->sentiment->isPositive($post_title));
+//         dd($post_title);
+        
+//     }
+// }

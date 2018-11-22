@@ -51,11 +51,14 @@
 
 
 <td>
+
     @php
-        $account = $company->accounts()->where('network_id', $network->id)->first();
+    
+        $account = $company->accounts()->first();
+        $network = $account->network()->first();
         $desc = $network->metric_descriptions()->first();
         
-        #dd($account);
+        #dd($network->id);
         if($account !== null){
             
             
@@ -75,8 +78,9 @@
         $datapoint = array("x" => $date->format('U') , "y" => $metricvalue->value);
         $dataPoints[] = $datapoint;
     }
-
+    
     #dd($date->format($format));
+    #$dataPoints = array("x" => 1, "y" => 1);
  @endphp
 
 

@@ -93,6 +93,12 @@ th {
                     </div>
                         <div class="bottom">
                                 <br><br>
+
+                                <p>Facebook:
+                                        <a href="/facebook_abs">abs.</a> 
+                                        <a href="/facebook_pct">%</a> 
+                                    </p>
+
                                 <p>Alexa:
 
                                 <a href="/alexarank_abs">abs.</a> 

@@ -53,19 +53,18 @@ th {
 <div class="big">
 
             <div class="month">
-               <div class="left"><h1>YOUTUBE VIDEO VIEWS GROWTH</h1></div> 
+               <div class="left"><h1>FACEBOOK FOLLOWERS % GROWTH</h1></div> 
                <div class="1month">(1 month)</div>        
             </div>
             <table>
 
 
                         <tr>
-                            <th>Company</th>
-                            <th>Views Increase</th>
+                                <th>Company</th>
+                            <th>Followers Increase</th>
                             
                             <th align="right">Start Value</th>
                             <th align="right">Latest Value</th>
-                            
                             <th>Website</th>
                         
                         </tr>
@@ -74,7 +73,7 @@ th {
                             @foreach ($accounts as $acc)
                             <td align="left"><a href="<?= $acc->company->id ?>"><?= $acc->company->name ?></td>
                             <!-- IN ALEXA => PAST - minus - PRESENT -->
-                            <td align="right"><b><?= number_format($acc->today_value - $acc->past_value) ?></b></td>
+                            <td align="right"><b><?= number_format((($acc->today_value / $acc->past_value) -1)*100, 1)."%" ?></b></td>
                             
                             
                             
@@ -94,12 +93,12 @@ th {
                     </div>
                         <div class="bottom">
                                 <br><br>
-
+                                
                                 <p>Facebook:
-                                        <a href="/facebook_abs">abs.</a> 
-                                        <a href="/facebook_pct">%</a> 
-                                    </p>
-
+                                    <a href="/facebook_abs">abs.</a> 
+                                    <a href="/facebook_pct">%</a> 
+                                </p>
+                                
                                 <p>Alexa:
 
                                 <a href="/alexarank_abs">abs.</a> 

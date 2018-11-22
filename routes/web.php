@@ -13,7 +13,9 @@
 
 Auth::routes();
 
-Route::get('/', 'PageController@index');
+
+
+
 Route::get('/news', 'PageController@news');
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -43,13 +45,17 @@ Route::get('/youvrank_pct', 'RankingsController@yviews_percentage_ten');
 Route::get('/yousrank_abs', 'RankingsController@ysubs_absolute_ten');
 Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
+// FACEBOOK FOLLOWERS TABLES
+Route::get('/facebook_abs', 'RankingsController@facebook_absolute_ten');
+Route::get('/facebook_pct', 'RankingsController@facebook_percentage_ten');
 
-Route::get('/{id}','PageController@show');
+// RICC
 
 Route::get('/reddit', 'RedditController@index');
 Route::post('/reddit', 'RedditController@index');
 
 Route::get('/youtube', 'YoutubeController@index');
 
-
+Route::get('/', 'PageController@index');
+Route::get('/{id}','PageController@show');
 

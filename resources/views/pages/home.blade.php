@@ -97,3 +97,7 @@
 <script src="{{mix('js/app.js')}}"></script> 
 
 @endsection
+
+
+
+<!--https://canvasjs.com/php-charts/spline-chart/-->

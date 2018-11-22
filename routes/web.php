@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', 'PageController@index');
+
 Route::get('/news', 'PageController@news');
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -44,12 +44,15 @@ Route::get('/yousrank_abs', 'RankingsController@ysubs_absolute_ten');
 Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
 
-Route::get('/{id}','PageController@show');
 
 Route::get('/reddit', 'RedditController@index');
 Route::post('/reddit', 'RedditController@index');
 
 Route::get('/youtube', 'YoutubeController@index');
+
+Route::get('/', 'PageController@index');
+
+Route::get('/{id}','PageController@show');
 
 
 

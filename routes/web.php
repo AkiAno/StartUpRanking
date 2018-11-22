@@ -45,8 +45,11 @@ Route::get('/youvrank_pct', 'RankingsController@yviews_percentage_ten');
 Route::get('/yousrank_abs', 'RankingsController@ysubs_absolute_ten');
 Route::get('/yousrank_pct', 'RankingsController@ysubs_percentage_ten');
 
+// FACEBOOK FOLLOWERS TABLES
+Route::get('/facebook_abs', 'RankingsController@facebook_absolute_ten');
+Route::get('/facebook_pct', 'RankingsController@facebook_percentage_ten');
 
-
+// RICC
 
 Route::get('/reddit', 'RedditController@index');
 Route::post('/reddit', 'RedditController@index');

@@ -53,7 +53,7 @@ th {
 <div class="big">
 
             <div class="month">
-               <div class="left"><h1>YOUTUBE VIDEO VIEWS GROWTH</h1></div> 
+               <div class="left"><h1>FACEBOOK FOLLOWERS GROWTH</h1></div> 
                <div class="1month">(1 month)</div>        
             </div>
             <table>
@@ -61,11 +61,10 @@ th {
 
                         <tr>
                             <th>Company</th>
-                            <th>Views Increase</th>
+                            <th>Followers Increase</th>
                             
                             <th align="right">Start Value</th>
                             <th align="right">Latest Value</th>
-                            
                             <th>Website</th>
                         
                         </tr>
@@ -96,9 +95,9 @@ th {
                                 <br><br>
 
                                 <p>Facebook:
-                                        <a href="/facebook_abs">abs.</a> 
-                                        <a href="/facebook_pct">%</a> 
-                                    </p>
+                                    <a href="/facebook_abs">abs.</a> 
+                                    <a href="/facebook_pct">%</a> 
+                                </p>
 
                                 <p>Alexa:
 

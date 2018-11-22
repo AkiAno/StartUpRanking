@@ -21,6 +21,7 @@
 
 <div>
 	{!! $response !!}
+	
 </div>
 
 @endsection

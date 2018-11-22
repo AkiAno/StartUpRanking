@@ -84,15 +84,16 @@ class RedditController extends Controller
 
             //dd($post_title);
             $analysis = new SentimentAnalysis;
-            //dd($analysis->isPositive($post_title));
-            dd($analysis->decision($post_title));
-
-
-
+            //dd($analysis->isPositive($post_title));   
+            
+            $sentenceEvaluation = ($analysis->decision($post_title));
+            
+            
+            
         
         
             $string_output .= '<div>';
-            $string_output .= '<h3 style="display:inline;">' . $post_title . '</h3> |';
+            $string_output .= '<h3 style="display:inline;">' . $post_title . '</h3> |' . $sentenceEvaluation;
             $string_output .= '<a href="' . $post_url . '" target="_blank">' . $post_url . '</a><br>';
             $string_output .= '</div>';
             //dd($string_output);
@@ -104,12 +105,15 @@ class RedditController extends Controller
         
         $string_output .= '</td></tr>';
         $string_output .= '</table>';
+
         
         $response = $string_output;
 
     }
 
-        return view('pages/reddit', ['arr' => $arr, 'headline_urlsource_name' => $headline_urlsource_name, 'checked_new' => $checked_new, 'checked_top' => $checked_top, 'response'=> $response]);
+
+        return view('pages/reddit', ['arr' => $arr, 'headline_urlsource_name' => $headline_urlsource_name, 'checked_new' => $checked_new, 'checked_top' => $checked_top, 'response'=> $response, 'sentenceEvaluation' => $sentenceEvaluation]);
+
     }
 
 }

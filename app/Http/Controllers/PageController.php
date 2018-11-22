@@ -29,4 +29,12 @@ class PageController extends Controller
         // return $company;
         return view('pages/show', compact('company','networks'));
     }
+
+    public function display(Request $request) {
+        $first_date = $request->from;
+        $second_date = $request->to;
+        $companies = Company::where('created_at','>=',date("Y-m-d",strtotime($first_date)))->where('created_at','<=',date("Y-m-d",strtotime($second_date)))->orderBy('id', 'ASC')->get();
+        $networks = Network::all();
+        return view('pages/table', compact('companies', 'networks'));
+    }
 }

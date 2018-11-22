@@ -84635,6 +84635,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graphs_chart_js__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graphs_chart_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__graphs_chart_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__date_picker_date_picker_js__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__data_table_js__ = __webpack_require__(328);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84642,6 +84643,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -84661,7 +84663,11 @@ var Calendar = function (_Component) {
     _createClass(Calendar, [{
         key: "handleSubmit",
         value: function handleSubmit(e) {
-            console.log(e.target.value);
+            e.preventDefault();
+            var first_date = document.getElementById("first-date").value;
+            var second_date = document.getElementById("last-date").value;
+            var data_table = new __WEBPACK_IMPORTED_MODULE_5__data_table_js__["a" /* default */]("http://www.final_project.test:8080/");
+            data_table.load(first_date, second_date);
         }
     }, {
         key: "render",
@@ -84741,6 +84747,9 @@ var Picker = function (_React$Component) {
     }
 
     _createClass(Picker, [{
+        key: "getDate",
+        value: function getDate() {}
+    }, {
         key: "handleChange",
         value: function handleChange(date) {
             this.setState({
@@ -90337,6 +90346,51 @@ exports.push([module.i, "input {\n    margin: 0 10px;\n    font-size: 20px;\n}\n
 
 // exports
 
+
+/***/ }),
+/* 327 */,
+/* 328 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var DataTable = function () {
+    function DataTable(url) {
+        _classCallCheck(this, DataTable);
+
+        this.url = url;
+    }
+    //change to the right url
+
+
+    _createClass(DataTable, [{
+        key: "display",
+        value: function display(code) {
+            var container = document.querySelector(".data.container");
+            container.innerHTML = code;
+        }
+    }, {
+        key: "load",
+        value: function load(first_date, second_date) {
+            var _this = this;
+
+            fetch("/api/dates?from=" + encodeURIComponent(first_date) + "&to=" + encodeURIComponent(second_date), {
+                method: "GET"
+            }).then(function (response) {
+                return response.text();
+            }).then(function (data) {
+                _this.display(data);
+            });
+        }
+    }]);
+
+    return DataTable;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (DataTable);
 
 /***/ })
 /******/ ]);

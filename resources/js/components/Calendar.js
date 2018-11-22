@@ -3,10 +3,15 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Chart from "./graphs/chart.js";
 import Picker from "./date-picker/date-picker.js";
+import DataTable from "../data-table.js";
 
 class Calendar extends Component {
     handleSubmit(e) {
-        console.log(e.target.value);
+        e.preventDefault();
+        let first_date = document.getElementById("first-date").value;
+        let second_date = document.getElementById("last-date").value;
+        let data_table = new DataTable("http://www.final_project.test:8080/");
+        data_table.load(first_date, second_date);
     }
     render() {
         return (

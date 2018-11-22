@@ -12,7 +12,7 @@ class Picker extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
     }
-
+    getDate() {}
     handleChange(date) {
         this.setState({
             startDate: date

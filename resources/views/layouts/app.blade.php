@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                     <div className="container">
-                            <a id="link" class="navbar-brand" to="/">
+                            <a id="link" class="navbar-brand" to="/" href="/">
                                 <span class="start">Start</span>
                                 <span class="ups">ups</span>
                                 <span class="today">Today</span>
@@ -34,13 +34,13 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/reddit">News</a>
+                    <a href="/reddit">Reddit</a>
                 </li>
                 <li>
-                    <a href="#">Login</a>
+                    <a href="/youvrank_abs">Rankings</a>
                 </li>
                 <li>
-                    <a href="#">Register</a>
+                    <a href="#">Contacts</a>
                 </li>
             </ul>
         </div>

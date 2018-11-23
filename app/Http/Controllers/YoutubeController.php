@@ -11,7 +11,7 @@ class YoutubeController extends Controller {
     { 
         $output = null;
          exec('node ../youtubeScraping.js', $output);
-         return $output;
-        return view('pages/youtube');
+        // return $output;
+        return view('pages/youtube', compact('output'));
     }
 }

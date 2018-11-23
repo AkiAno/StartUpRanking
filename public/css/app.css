@@ -10622,3 +10622,65 @@ hr {
   }
 }
 
+.company-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.3rem;
+}
+
+.items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+
+.header {
+  font-weight: 700;
+}
+
+.lowercase-letter {
+  text-transform: lowercase;
+}
+
+.reddit-form {
+  padding: 1rem;
+}
+
+.reddit-form select,
+input {
+  margin: 1rem;
+}
+
+.reddit-response {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #f3f3f3;
+  margin: 1rem;
+  -webkit-box-shadow: 5px 10px #c5c4c4;
+          box-shadow: 5px 10px #c5c4c4;
+}
+
+.sentimic-analyze {
+  padding-right: 1rem;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.company-name {
+  text-decoration: none;
+}
+
+.company-name:hover {
+  color: #3498db;
+}
+

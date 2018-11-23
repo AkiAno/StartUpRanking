@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form method="post">
+<form method="post" class="reddit-form container">
 	@csrf
 	<select name="headline_urlsource_name" id="headline_urlsource_name" onchange="this.form.submit()">
 		<option>Select a feed</option>
@@ -19,9 +19,35 @@
 
 </form>
 
-<div>
+<div class="container">
 	{!! $response !!}
 	
 </div>
+
+	<script>
+			document.getElementsByName('headline_urlsource_type');
+			let sentimic_analyze = '<?php echo json_encode($evaluations)?>';
+			let elements = document.getElementsByClassName('sentimic-analyze');
+				for (var i = 0; i < elements.length; i++) {
+					if(elements[i].innerHTML == 'positive'){
+						elements[i].style.color="green";
+					} else if (elements[i].innerHTML == 'neutral'){
+						elements[i].style.color="blue";
+					} else {
+						elements[i].style.color="red";
+					}
+				}
+			// for(let i = 0; i < sentimic_analyze.length; i++){
+			// 	let sentimic_color = document.querySelector('.sentimic-analyze');
+			// 	if(sentimic_analyze[i] == 'positive') {
+			// 		sentimic_color.className = 'sentimic-analyze positive';
+			// 	} else {
+			// 		sentimic_color.className = 'sentimic-analyze negative';
+			// 	}
+			// }
+			
+	</script>
+
+
 
 @endsection

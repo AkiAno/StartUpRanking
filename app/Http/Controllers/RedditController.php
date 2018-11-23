@@ -24,6 +24,7 @@ class RedditController extends Controller
         $headline_urlsource_name = $request->input("headline_urlsource_name", null);
         $checked_new = $request->input("checked_new", null);
         $checked_top = $request->input("checked_top", null);
+        $evaluations = [];
 
         $response = null;
 
@@ -55,7 +56,7 @@ class RedditController extends Controller
         
         // // echo $json->data->children[0]->kind;
         
-        $string_output = '<table>';
+        $string_output = '<table width=100%>';
         $string_output .= '<tr><td width=1000>';
         
         // //print_r($json->data->children);
@@ -89,22 +90,21 @@ class RedditController extends Controller
             $sentenceEvaluation = ($analysis->decision($post_title));
             
             
-            
+            array_push($evaluations, $sentenceEvaluation);
         
-        
-            $string_output .= '<div>';
-            $string_output .= '<h3 style="display:inline;">' . $post_title . '</h3> |' . $sentenceEvaluation;
+            $string_output .= '<div class="reddit-response">';
+            $string_output .= '<h3 style="">' . $post_title . ' </h3> <span class="sentimic-analyze">'. $sentenceEvaluation.'</span>';
             $string_output .= '<a href="' . $post_url . '" target="_blank">' . $post_url . '</a><br>';
             $string_output .= '</div>';
             //dd($string_output);
         
-        
+            
             $x++;
         
         }
         
         $string_output .= '</td></tr>';
-        $string_output .= '</table>';
+        $string_output .= '</table><br><br>';
 
         
         $response = $string_output;
@@ -112,7 +112,7 @@ class RedditController extends Controller
     }
 
 
-        return view('pages/reddit', ['arr' => $arr, 'headline_urlsource_name' => $headline_urlsource_name, 'checked_new' => $checked_new, 'checked_top' => $checked_top, 'response'=> $response]);
+        return view('pages/reddit', ['arr' => $arr, 'headline_urlsource_name' => $headline_urlsource_name, 'checked_new' => $checked_new, 'checked_top' => $checked_top, 'response'=> $response, 'evaluations' => $evaluations]);
 
     }
 

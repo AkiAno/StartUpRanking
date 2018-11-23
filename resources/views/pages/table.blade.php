@@ -23,7 +23,7 @@
                         {{$comp->id}}
                     </td>
                     <td>
-                        <a href="/{{ $comp->id }}" style='color:black;'>
+                        <a href="/{{ $comp->id }}" style='' class="company-name">
                             {{$comp->name}}
                         </a>
                     </td>

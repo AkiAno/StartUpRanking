@@ -18,7 +18,7 @@ class RankingsController extends Controller
        $description = Metric_description::find(4); // 4 = Alexa Rank
 
        // $today = date('Y-m-d 0:0:0', time());
-       $today = '2018-11-16';
+       $today = '2018-11-23';
        // WE WANT ONE MONTH / ONE WEEK / ONE XY..
        $past = '2018-11-03 00:00:00';
 
@@ -58,7 +58,7 @@ class RankingsController extends Controller
         $description = Metric_description::find(4);
  
         // $today = date('Y-m-d 0:0:0', time());
-        $today = '2018-11-16';
+        $today = '2018-11-23';
         // WE WANT ONE MONTH / ONE WEEK / ONE XY..
         $past = '2018-11-03 00:00:00';
  
@@ -104,7 +104,7 @@ class RankingsController extends Controller
         $description = Metric_description::find(5);  // INSTAGRAM FOLLOWERS
  
         // $today = date('Y-m-d 0:0:0', time());
-        $today = '2018-11-16';
+        $today = '2018-11-23';
         // WE WANT ONE MONTH / ONE WEEK / ONE XY..
         $past = '2018-11-03 00:00:00';
  
@@ -143,7 +143,7 @@ class RankingsController extends Controller
             $description = Metric_description::find(5);  // INSTAGRAM FOLLOWERS
      
             // $today = date('Y-m-d 0:0:0', time());
-            $today = '2018-11-16';
+            $today = '2018-11-23';
             // WE WANT ONE MONTH / ONE WEEK / ONE XY..
             $past = '2018-11-03 00:00:00';
      
@@ -190,7 +190,7 @@ class RankingsController extends Controller
     $description = Metric_description::find(6);  // INSTAGRAM POSTS
 
     // $today = date('Y-m-d 0:0:0', time());
-    $today = '2018-11-16';
+    $today = '2018-11-23';
     // WE WANT ONE MONTH / ONE WEEK / ONE XY..
     $past = '2018-11-03 00:00:00';
 
@@ -229,7 +229,7 @@ class RankingsController extends Controller
         $description = Metric_description::find(6);  // INSTAGRAM POSTS
  
         // $today = date('Y-m-d 0:0:0', time());
-        $today = '2018-11-16';
+        $today = '2018-11-23';
         // WE WANT ONE MONTH / ONE WEEK / ONE XY..
         $past = '2018-11-03 00:00:00';
  
@@ -274,7 +274,7 @@ class RankingsController extends Controller
             $description = Metric_description::find(1);  // TWITTER FOLLOWERS
      
             // $today = date('Y-m-d 0:0:0', time());
-            $today = '2018-11-16';
+            $today = '2018-11-23';
             // WE WANT ONE MONTH / ONE WEEK / ONE XY..
             $past = '2018-11-03 00:00:00';
      
@@ -313,7 +313,7 @@ class RankingsController extends Controller
                 $description = Metric_description::find(1);  // TWITTER FOLLOWERS
          
                 // $today = date('Y-m-d 0:0:0', time());
-                $today = '2018-11-16';
+                $today = '2018-11-23';
                 // WE WANT ONE MONTH / ONE WEEK / ONE XY..
                 $past = '2018-11-03 00:00:00';
          
@@ -355,7 +355,7 @@ class RankingsController extends Controller
                     $description = Metric_description::find(8);  // YOUTUBE VIDEO VIEWS
              
                     // $today = date('Y-m-d 0:0:0', time());
-                    $today = '2018-11-16';
+                    $today = '2018-11-23';
                     // WE WANT ONE MONTH / ONE WEEK / ONE XY..
                     $past = '2018-11-03 00:00:00';
              
@@ -390,10 +390,10 @@ class RankingsController extends Controller
                     } 
             
                     public function yviews_percentage_ten(){
-                        $description = Metric_description::find(8);  // TWITTER FOLLOWERS
+                        $description = Metric_description::find(8);  // YOUTUBE VIDEO VIEWS
                  
                         // $today = date('Y-m-d 0:0:0', time());
-                        $today = '2018-11-16';
+                        $today = '2018-11-23';
                         // WE WANT ONE MONTH / ONE WEEK / ONE XY..
                         $past = '2018-11-03 00:00:00';
                  
@@ -432,10 +432,10 @@ class RankingsController extends Controller
     // YOUTUBE SUBSCRIBERS
 
     public function ysubs_absolute_ten(){
-        $description = Metric_description::find(7);  // YOUTUBE VIDEO VIEWS
+        $description = Metric_description::find(7);  // YOUTUBE SUBSCRIBERS
  
         // $today = date('Y-m-d 0:0:0', time());
-        $today = '2018-11-16';
+        $today = '2018-11-23';
         // WE WANT ONE MONTH / ONE WEEK / ONE XY..
         $past = '2018-11-03 00:00:00';
  
@@ -470,10 +470,10 @@ class RankingsController extends Controller
         } 
 
         public function ysubs_percentage_ten(){
-            $description = Metric_description::find(7);  // TWITTER FOLLOWERS
+            $description = Metric_description::find(7);  // YOUTUBE SUBSCRIBERS
      
             // $today = date('Y-m-d 0:0:0', time());
-            $today = '2018-11-16';
+            $today = '2018-11-23';
             // WE WANT ONE MONTH / ONE WEEK / ONE XY..
             $past = '2018-11-03 00:00:00';
      

@@ -31,10 +31,10 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/news">News</a>
+                    <a href="/reddit">News</a>
                 </li>
                 <li>
                     <a href="#">Login</a>

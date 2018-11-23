@@ -43,7 +43,7 @@
                                         if($metrics_prev !== null){
                                             if($metrics_cur !== null){
                                                 $percentage_shift = (($metrics_cur->value - $metrics_prev->value) / $metrics_prev->value)*100;
-                                                echo $metrics_cur->value." ".'('.number_format((float)$percentage_shift, 2, '.', '').'%)<br>';
+                                                echo $metrics_cur->value." ".'<br><span class="percentage" style="color:#3490dc; font-weight:300; font-size:0.9rem;">('.number_format((float)$percentage_shift, 2, '.', '').'%)</span><br>';
                                                
                                             }
                                             
@@ -60,3 +60,17 @@
                 @endforeach
             </tbody>
         </table>
+
+        <script>
+            window.onload(){
+                let persentage = parseInt('<?php echo json_encode($percentage_shift)?>');
+                console.log(persentage);
+                let element = document.getElementsByClassName('percentage');
+                        if(persentage > 0 ){
+                            element.style.color="green";
+                        } else {
+                            element.style.color="red";
+                        }
+                    }
+                }
+        </script>

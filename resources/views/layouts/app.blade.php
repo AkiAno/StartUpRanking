@@ -40,7 +40,7 @@
                     <a href="/youvrank_abs">Rankings</a>
                 </li>
                 <li>
-                    <a href="#">Contacts</a>
+                    <a href="/contacts">Contacts</a>
                 </li>
             </ul>
         </div>

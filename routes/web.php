@@ -50,6 +50,8 @@ Route::post('/reddit', 'RedditController@index');
 
 Route::get('/youtube', 'YoutubeController@index');
 
+Route::get('/contacts', 'PageController@contacts');
+
 Route::get('/', 'PageController@index');
 Route::get('/{id}', 'PageController@show');
 Route::get('/api/dates', 'PageController@display');

@@ -11,12 +11,20 @@ class RedditController extends Controller
 {
     public function index(Request $request) {
         $arr = array(
+            'Reddit: Stock Market' => 'https://www.reddit.com/r/STOCKMARKETNEWS/',            
+            'Reddit: WallStreet Bets' => 'https://www.reddit.com/r/wallstreetbets/',
+            'Reddit: Bloomberg' => 'https://www.reddit.com/r/bloomberg/',
+            'Reddit: Samsung' => 'https://www.reddit.com/r/baidu/',
+            'Reddit: IBM' => 'https://www.reddit.com/r/IBM/',
+            'Reddit: Microsoft' => 'https://www.reddit.com/r/microsoft/',
+            'Reddit: Netflix' => 'https://www.reddit.com/r/netflix/',
+            'Reddit: Alphabet' => 'https://www.reddit.com/r/alphabet/',
             'Reddit: Tesla' => 'https://www.reddit.com/r/teslamotors/',
             'Reddit: Amazon' => 'https://www.reddit.com/r/amazon/',
             'Reddit: SpaceX' => 'https://www.reddit.com/r/spacex/',
-            'Reddit: Binance' => 'https://www.reddit.com/r/binance/',
-            'Reddit: Bitcoin' => 'https://pay.reddit.com/r/Bitcoin',
-            'Reddit: Coinbase' => 'https://www.reddit.com/r/CoinBase/',
+            'Reddit: BlueOrigin' => 'https://www.reddit.com/r/BlueOrigin/',            
+            'Reddit: Uber' => 'https://www.reddit.com/r/uber/',
+            'Reddit: Google' => 'https://www.reddit.com/r/google/'
         
         );
 

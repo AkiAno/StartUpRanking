@@ -18,7 +18,7 @@
 </head>
 <body>
     
-        <nav id="nav-menu" class="navbar navbar-expand-md navbar-laravel">
+        <nav id="nav-menu" class="fixed-top navbar navbar-expand-md navbar-laravel mb-3">
         <div class="container-fluid">
             <div class="navbar-header">
                     <div className="container">
@@ -45,6 +45,8 @@
             </ul>
         </div>
     </nav>
+    <br>
+    <br>
     <div id="app">
         <main>
             @yield('content')

@@ -4,7 +4,7 @@
 
 
 @section('content')
-<div id="date-picker"></div>
+<div id="date-picker" class="mt-2"></div>
 <div id="data" class="data container">
        @include('pages/table')
 </div>
